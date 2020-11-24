@@ -11,13 +11,14 @@
             <th>priority</th>
         </thead>
         <tbody formArrayName="tasks">
-            <tr *ngFor="let t of taskArray.controls" [formGroup]="t">
+            <tr *ngFor="let t of taskArray.controls; let i = index" [formGroup]="t">
                 <input type="text" formControlName="description">
                 <select formControlName="priority" >
                     <option value="2">High</option>
                     <option value="1">Medium</option>
                     <option value="0">Low</option>
-                  </select>
+                </select>
+                <button (click)="onDelete(i)">Delete</button>
             </tr>
         </tbody>
     </table>

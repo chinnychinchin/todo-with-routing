@@ -15,12 +15,28 @@ export class CreateComponent implements OnInit {
   
   constructor(private tododb: TodoDatabase, private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  async ngOnChanges() {
+    
   }
 
-  addTodo() {
+  async addTodo() {
     const id = uuidv4()
-    console.log(this.todoComp.todos)
+    let singleTodo = this.todoComp.todo;
+    //add an id
+    singleTodo.id = id;
+    //refactor priorities from strings to numbers
+    singleTodo.tasks = singleTodo.tasks.map(t => {
+      t.priority = parseInt(t.priority);
+      return t
+    })
+    
+    //update database with the new todo
+    await this.tododb.addTodo(singleTodo);
+
+    this.router.navigate(['/']);
+
   }
 
 }

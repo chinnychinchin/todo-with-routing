@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Todo } from '../models';
+import { TodoDatabase } from '../todo.database';
 
 @Component({
   selector: 'app-main',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tododb: TodoDatabase) { }
+
+  todos: Todo[]
 
   ngOnInit(): void {
+    this.tododb.getTodos().then(result => { this.todos = result })
   }
 
+ 
 }

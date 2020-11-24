@@ -1,1 +1,7 @@
 <button [routerLink]="['/create']">Create</button>
+
+<br><br>
+
+<mat-nav-list *ngIf="todos != undefined">
+    <a mat-list-item href="..." *ngFor="let todo of todos">{{todo.title}}</a>
+</mat-nav-list>

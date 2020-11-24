@@ -38,10 +38,16 @@ export class TodoComponent implements OnInit {
 
   addTask() {
     this.taskArray.push(this.createTaskFormGroup())
-    //console.log(this.taskArray)
+    
   }
 
-  get todos(): Todo {
+  onDelete(i) {
+    this.taskArray.removeAt(i);
+  }
+
+
+
+  get todo () {
     return this.todoForm.value
   }
 

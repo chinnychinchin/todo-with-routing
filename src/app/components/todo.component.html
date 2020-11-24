@@ -1,0 +1,25 @@
+<form [formGroup]="todoForm">
+    <div>
+        <label for="">Title</label>
+        <input type="text" formControlName="title">
+        <button type="button" (click)="addTask()">Add task</button>
+    </div>
+
+    <table *ngIf="taskArray.controls.length > 0">
+        <thead>
+            <th>description</th>
+            <th>priority</th>
+        </thead>
+        <tbody formArrayName="tasks">
+            <tr *ngFor="let t of taskArray.controls" [formGroup]="t">
+                <input type="text" formControlName="description">
+                <select formControlName="priority" >
+                    <option value="2">High</option>
+                    <option value="1">Medium</option>
+                    <option value="0">Low</option>
+                  </select>
+            </tr>
+        </tbody>
+    </table>
+
+</form>

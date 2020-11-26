@@ -1,10 +1,10 @@
-<button [routerLink]="['/create']">Create</button>
+<button mat-raised-button [routerLink]="['/create']">Create</button>
 
 <br><br>
 
 <mat-nav-list *ngIf="todos != undefined">
     <mat-list-item *ngFor="let todo of todos">
         <a mat-list-item [routerLink]="['/details', todo.id]" >{{todo.title}}</a>
-        <button mat-raised-button>Delete</button>
+        <button mat-raised-button color="warn" (click)="onDelete(todo.id)">Delete</button>
     </mat-list-item>
 </mat-nav-list>

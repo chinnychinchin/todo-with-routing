@@ -24,18 +24,23 @@ export class TodoDatabase extends Dexie {
     //Add methods
 
     //Put a todo
-    async addTodo(t: Todo) :Promise<any> {
-        return await this.todo.put(t)
+    addTodo(t: Todo) :Promise<any> {
+        return this.todo.put(t)
     }
 
     //Retrieve all todos
-    async getTodos() : Promise<any> {
-        return await this.todo.toArray()
+    getTodos() : Promise<any> {
+        return this.todo.toArray()
     }
 
     //Get todo by id
     getSingleTodo(id: string) : Promise<Todo> {
         return this.todo.get(id);
+    }
+
+    //delete a todo
+    deleteTodo(id: string) :Promise<any> {
+        return this.todo.where('id').equals(id).delete();
     }
 
 

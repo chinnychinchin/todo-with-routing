@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Todo } from '../models';
 import { TodoDatabase } from '../todo.database';
 
@@ -9,7 +10,7 @@ import { TodoDatabase } from '../todo.database';
 })
 export class MainComponent implements OnInit {
 
-  constructor(private tododb: TodoDatabase) { }
+  constructor(private tododb: TodoDatabase, private router: Router) { }
 
   todos: Todo[]
 
@@ -17,5 +18,9 @@ export class MainComponent implements OnInit {
     this.tododb.getTodos().then(result => this.todos = result )
   }
 
+  async onDelete(id) {
+    await this.tododb.deleteTodo(id);
+    this.tododb.getTodos().then(result => this.todos = result )
+  }
  
 }

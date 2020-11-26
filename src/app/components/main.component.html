@@ -3,5 +3,8 @@
 <br><br>
 
 <mat-nav-list *ngIf="todos != undefined">
-    <a mat-list-item [routerLink]="['/details', todo.id]" *ngFor="let todo of todos">{{todo.title}}</a>
+    <mat-list-item *ngFor="let todo of todos">
+        <a mat-list-item [routerLink]="['/details', todo.id]" >{{todo.title}}</a>
+        <button mat-raised-button>Delete</button>
+    </mat-list-item>
 </mat-nav-list>

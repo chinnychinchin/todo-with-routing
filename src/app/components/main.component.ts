@@ -14,7 +14,7 @@ export class MainComponent implements OnInit {
   todos: Todo[]
 
   ngOnInit(): void {
-    this.tododb.getTodos().then(result => { this.todos = result })
+    this.tododb.getTodos().then(result => this.todos = result )
   }
 
  

@@ -33,5 +33,10 @@ export class TodoDatabase extends Dexie {
         return await this.todo.toArray()
     }
 
+    //Get todo by id
+    getSingleTodo(id: string) : Promise<Todo> {
+        return this.todo.get(id);
+    }
+
 
 }

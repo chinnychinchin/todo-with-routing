@@ -15,12 +15,24 @@ export class CreateComponent implements OnInit {
   @ViewChild('myTodo') todoComp : TodoComponent
   
   form$: Subscription;
-  isDisabled: boolean
+  isValid: boolean
 
   constructor(private tododb: TodoDatabase, private router: Router) { }
 
   ngOnInit(): void { 
-    this.form$=this.todoComp.todo.statusChanges
+    
+  }
+
+  ngAfterViewInit() {
+
+
+    this.form$=this.todoComp.todoForm.statusChanges.subscribe(
+      v => { 
+        if(v=="VALID") {this.isValid=true}
+        else{this.isValid = false}
+       }
+    )
+
   }
 
   async addTodo() {

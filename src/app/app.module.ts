@@ -11,11 +11,13 @@ import { TodoComponent } from './components/todo.component';
 
 import { TodoDatabase } from './todo.database';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TodoDetailsComponent } from './components/todo-details.component';
  
 
 const ROUTES: Routes = [
   {path: '', component: MainComponent},
   {path: 'create', component: CreateComponent},
+  {path: 'details/:id', component: TodoDetailsComponent},
   {path: "**", redirectTo: '/', pathMatch: 'full'}
 ]
 
@@ -24,7 +26,8 @@ const ROUTES: Routes = [
     AppComponent,
     MainComponent,
     CreateComponent,
-    TodoComponent
+    TodoComponent,
+    TodoDetailsComponent
   ],
   imports: [
     BrowserModule,

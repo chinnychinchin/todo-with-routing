@@ -3,6 +3,7 @@ import { TodoComponent } from './todo.component';
 import { v4 as uuidv4 } from 'uuid';
 import { TodoDatabase } from '../todo.database';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-create',
@@ -13,12 +14,13 @@ export class CreateComponent implements OnInit {
 
   @ViewChild('myTodo') todoComp : TodoComponent
   
+  form$: Subscription;
+  isDisabled: boolean
+
   constructor(private tododb: TodoDatabase, private router: Router) { }
 
-  ngOnInit(): void { }
-
-  async ngOnChanges() {
-    
+  ngOnInit(): void { 
+    this.form$=this.todoComp.todo.statusChanges
   }
 
   async addTodo() {

@@ -1,4 +1,4 @@
 <app-todo #myTodo></app-todo>
 
-<button type="button" [routerLink] ="['/']">Back</button>
-<button type="button" (click)="addTodo()">Add todo</button>
+<button type="button" mat-raised-button color="primary" [routerLink] ="['/']">Back</button>
+<button type="button" mat-raised-button color="primary" (click)="addTodo()" [disabled]="todoComp.todo.invalid">Add todo</button>
